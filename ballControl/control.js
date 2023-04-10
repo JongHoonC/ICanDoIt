@@ -72,7 +72,6 @@ function btn2Action() {
       if (relCircle.x - moveValue < relBoxLeft) {
         left = relBoxLeft;
       }
-
       circle.style.left = left + "px";
     }
   } else if (!isAction) {
