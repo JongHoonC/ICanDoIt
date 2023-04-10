@@ -20,6 +20,7 @@ JS 부분
   - 원.getBoundingClientRect().top;
 - window에서는 절대좌표로
   - window.pageYOffset + dnjs.getBoundingClientRect().top;
+  - window의 좌표 찾기
 
 3. 방향키마다 style.left, right, up, down 을 사용해 클릭 시 5px씩 움직이도록 한다.
 
@@ -38,3 +39,27 @@ window 에서는 절대좌표
 네모에서는 상대좌표
 
 node tree
+
+문제점
+
+1. true -> false 로 메뉴를 변경할 때 50px씩 이동하는것이 아닌 100px씩 이동
+
+- 함수 호출이 중복으로 이루어져서 해당 현상이 발생한다.
+
+해결방안
+
+- 하나의 클릭으로 유효성 검사를 모두 제어하기
+- 위에 addeventlistener 내에서 처리하기.
+
+3. if 문으로 isTrue 일때와 isFalse 일때를 구분하지 못함. O
+
+클릭했을 때 select에 change라는 이벤트리스너를 추가
+
+만약 select의 value 값이 true 일 때
+아래의 콘솔을 출력
+
+value 값이 false 일 때는
+아래의 콘솔을 출력
+
+위 두개의 조건 모두 아닐 때
+아래의 콘솔 출력
