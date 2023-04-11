@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <title>가위바위보 였던것</title>
+  </head>
+  <body>
+    <div class="questionArea">
+      <div id="inr_questionArea">
+        <div id="question"></div>
+      </div>
+      <h1>vs</h1>
+      <div id="choiceArea">
+        <label for="choice1" class="choiceOne">
+          <input id="choice1" type="radio" name="aaa" value="1" />
+        </label>
+        <label for="choice2" class="choiceOne">
+          <input id="choice2" type="radio" name="aaa" value="2" />
+        </label>
+      </div>
+    </div>
+    <div class="textArea">
+      <div class="count">
+        <div class="number">
+          <span>현재 문제 번호 : </span>
+          <span id="thisNum">1</span>
+        </div>
+        <div class="correct">
+          <span>맞춘 문제 수 : </span>
+          <span id="trueNum"></span>
+        </div>
+        <div class="uncorrect">
+          <span>틀린 문제 수 : </span>
+          <span id="falseNum"></span>
+        </div>
+      </div>
+      <div class="clickBox">
+        <button id="nextBtn">다음(NEXT)</button>
+        <button id="reBtn">다시하기</button>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
