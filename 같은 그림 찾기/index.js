@@ -61,14 +61,8 @@ function practiceCall(randomChoice, choiceOneI, i) {
   createChoice.src = randomChoice.src;
   createChoice.setAttribute("class", randomChoice.class);
   choiceOneI.appendChild(createChoice);
-  //사용 이유 :
   let check = document.getElementsByName("aaa");
-  // for (let j = 0; j < check.length; j++) {
-  // console.log(check[j]);
-  // if (j === i) {
   check[i].setAttribute("value", randomChoice.value);
-  // }
-  // }
 }
 setQuestion();
 
