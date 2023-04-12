@@ -16,31 +16,31 @@
       <h1>vs</h1>
       <div id="choiceArea">
         <label for="choice1" class="choiceOne">
-          <input id="choice1" type="radio" name="aaa" value="1" />
+          <input id="choice1" type="radio" name="aaa" />
         </label>
         <label for="choice2" class="choiceOne">
-          <input id="choice2" type="radio" name="aaa" value="2" />
+          <input id="choice2" type="radio" name="aaa" />
         </label>
       </div>
     </div>
     <div class="textArea">
       <div class="count">
-        <div class="number">
+        <div id="number">
           <span>현재 문제 번호 : </span>
           <span id="thisNum">1</span>
         </div>
         <div class="correct">
           <span>맞춘 문제 수 : </span>
-          <span id="trueNum"></span>
+          <span id="trueNum">0</span>
         </div>
         <div class="uncorrect">
           <span>틀린 문제 수 : </span>
-          <span id="falseNum"></span>
+          <span id="falseNum">0</span>
         </div>
       </div>
       <div class="clickBox">
-        <button id="nextBtn">다음(NEXT)</button>
-        <button id="reBtn">다시하기</button>
+        <button onclick="goNext()" id="nextBtn">다음(NEXT)</button>
+        <button id="reBtn" onclick="reloadBtn()">다시하기</button>
       </div>
     </div>
     <script src="./index.js"></script>
