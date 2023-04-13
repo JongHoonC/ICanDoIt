@@ -22,7 +22,7 @@ h1 {
 #choiceArea {
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
 }
 .textArea {

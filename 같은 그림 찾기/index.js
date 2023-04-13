@@ -1,14 +1,40 @@
 const questionMaxCnt = 6;
+// let a = `<input>asdfasdf`;
+// for (let e = 0; e < 2; e++) {
+//   let t = document.getElementById("choiceArea");
+//   t.appendChild(a);
+// }
+
 //가위바위보 사진 배열화 한 것을 RSP로 선언
 const RSP = [
   { src: "img/rock.jpg", value: "rock", class: "choice", id: "ques" },
   { src: "img/scissor.jpg", value: "scissor", class: "choice", id: "ques" },
   { src: "img/paper.jpg", value: "paper", class: "choice", id: "ques" },
 ];
+//보기는 몇개 생성할거야
+const objCount = 2;
+//어디에다가 추가할거냐 난 여기에 추가할거야
+let choiceArea = document.getElementById("choiceArea");
+
+for (let i = 0; i < objCount; i++) {
+  // HTML에 라벨 추가한다
+  let objLabel = document.createElement("label");
+  objLabel.setAttribute("for", "choice" + (i + 1));
+  objLabel.className = "choiceOne";
+
+  //HTML에 input 추가한다
+  let objInput = document.createElement("input");
+  objInput.setAttribute("id", "choice" + (i + 1));
+  objInput.setAttribute("type", "radio");
+  objInput.setAttribute("name", "aaa");
+
+  choiceArea.appendChild(objLabel);
+  objLabel.appendChild(objInput);
+}
+
 //문제에서 랜덤 사진 출력 함수 만들기
 function setQuestion() {
   const objRSP = RSP[Math.floor(Math.random() * RSP.length)];
-
   //html에 img 요소 추가
   const objIMG = document.createElement("img");
   objIMG.src = objRSP.src;
