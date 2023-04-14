@@ -51,40 +51,56 @@ function setQuestion() {
   //선택박스 선언하기
   let choiceOne = document.querySelectorAll(".choiceOne");
   // 선택박스에 랜덤으로 사진 출력하기
-  // console.log(choiceOne);
   // 배열 만들기
   const objCountArr = [];
-
-  // let objRandom = RSP[Math.floor(Math.random() * RSP.length)];
-  // objCountArr.push(objRandom);
-  // for (let i = 0; i < objCountArr.length; i++) {
-  //   let data = objCountArr[i];
-  //   // let aa = v
-  //   while(objCountArr[i].value){
-
-  //   }
-  //   let random = RSP.filter((item)=>item.value != data.value);
-  //   let objRandom2 = RSP[Math.floor(Math.random() * random.length)];
-  //   objCountArr.push(objRandom2);
-  // Objcountarr 길이를 체크
-  // 배열이 0보다 클 경우 속에 있는 인자를 체크
-  // 그 인자와 난수로 뽑아온 값을 비교
-  // 다르면 넣고 아니면 rsp에서 뽑은 벨류 말고 나머지 한개를 가져옴
-  // let a = RSP.filter((item)=>item.value != 인자)
-  // 그 한개를 넣음
-  // let objRandom = RSP[Math.floor(Math.random() * RSP.length)];
-  // let isFalse = false;
-  // for (let j = 0; j < objCountArr.length; j++) {
-  //   if (objCountArr[j].value == objRandom.value) {
-  //     isFalse = true;
-  //     // objRandom = RSP[Math.floor(Math.random() * RSP.length)];
-  //     break;
-  //   }
-  // }
-  // if (isFalse != true) {
-  //   objCountArr.push(objRandom);
-  // }
+  const objCountArrN = [];
+  let objRandom = RSP[Math.floor(Math.random() * RSP.length)];
+  objCountArr.push(objRandom);
+  console.log("0번째 들어간 인자의 밸류 : " + objCountArr[0].value);
+  for (let i = 0; i < RSP.length; i++) {
+    //true 인 것들만 새 배열로 들어와야됨
+    if (RSP[i].value !== objCountArr[0].value) {
+      objCountArrN.push(RSP[i]);
+    }
+  }
+  for (let i = 0; i < objCountArrN.length; i++) {
+    objCountArr.push(objCountArrN[i]);
+  }
+  console.log(objCountArr);
 }
-console.log(objCountArr);
-// }
-setQuestion();
+// setQuestion();
+
+const test = () => {
+  const test = [{ value: "1" }, { value: "2" }, { value: "3" }];
+  let asdf = [];
+  for (let i = 0; i < 3; i++) {
+    let k = test[Math.floor(Math.random() * test.length)];
+
+    if (asdf.length < 1) {
+      asdf.push(k);
+      // console.log(asdf);
+    } else {
+      let ee = test;
+      for (let j = 0; j < asdf.length; j++) {
+        ee = ee.filter((item) => asdf[j].value != item.value);
+      }
+      let u = ee[Math.floor(Math.random() * ee.length)];
+      asdf.push(u);
+
+      // let ii = [];
+      // for (let j = 0; j < test.length; j++) {
+      //   let zxcv = test[j];
+      //   let is = false;
+      //   for (let p = 0; p < asdf.length; p++) {
+      //     let req = asdf[p];
+      //     if (req.value == zxcv.value) is = true;
+      //   }
+      //   if (!is) ii.push(zxcv);
+      // }
+      // let q = ii[Math.floor(Math.random() * ii.length)];
+      // asdf.push(q);
+    }
+  }
+  // console.log("??", asdf);
+};
+console.log(test());
