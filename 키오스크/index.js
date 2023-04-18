@@ -36,7 +36,6 @@ function order() {
           const plusBtn = document.createElement("button");
           let countValue = 1;
           for (let i = 0; i < count.length; i++) {
-            console.log(count[i]);
             // 빼기 버튼
             minBtn.innerText = "-";
             minBtn.setAttribute("id", `minBtn${i}`);
@@ -49,6 +48,11 @@ function order() {
             plusBtn.innerText = "+";
             plusBtn.setAttribute("id", `plusBtn${i}`);
             count[i].appendChild(plusBtn);
+
+            const minusBtn = document.getElementById(`minBtn${i}`);
+            minusBtn.addEventListener("click", () => {
+              console.log("sdf");
+            });
           }
 
           //가격

@@ -22,4 +22,14 @@ const result = objInput[i].value - currentQues.value;
 
 - 23.04.17 4시 키오스크 시작
 
-- 23.04.18 - 버튼 +버튼 누를 때 값이 중복돼 숫자가 2씩 올라가는 현상 발생.... 미쳐버릴 거 같다.
+- 23.04.18 for문 안에
+  const minusBtn = document.getElementById(`minBtn${i}`);
+  minusBtn.addEventListener("click", () => {
+  console.log("sdf");
+  });
+
+  코드를 쓰고 여러개의 메뉴를 선택 후 추가하면 주문내역 제일 상단에 있는 메뉴에 -버튼을 누르면 메뉴 선택한 갯수만큼 console이 찍힌다.
+
+  이유 : 뭐가 중첩된 거 같다.
+
+  해결방안 : 중복 되지 않도록 한다,,,?
