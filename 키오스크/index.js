@@ -32,28 +32,39 @@ function order() {
 
           const minBtn = document.createElement("button");
           const countText = document.createElement("span");
-          const count = document.querySelectorAll(".count");
+          let count = document.querySelectorAll(".count");
           const plusBtn = document.createElement("button");
           let countValue = 1;
           for (let i = 0; i < count.length; i++) {
-            // 빼기 버튼
             minBtn.innerText = "-";
-            minBtn.setAttribute("id", `minBtn${i}`);
+            minBtn.setAttribute("class", `minBtn`);
             count[i].appendChild(minBtn);
-
-            //숫자 감소 증가
-            countText.innerText = countValue;
-            count[i].appendChild(countText);
-            // 더하기 버튼
-            plusBtn.innerText = "+";
-            plusBtn.setAttribute("id", `plusBtn${i}`);
-            count[i].appendChild(plusBtn);
-
-            const minusBtn = document.getElementById(`minBtn${i}`);
-            minusBtn.addEventListener("click", () => {
-              console.log("sdf");
-            });
           }
+          const minusBtn = document.querySelectorAll(".minBtn");
+          minusBtn.forEach((mB) => {
+            mB.addEventListener("click", () => {
+              console.log("SDF");
+            });
+          });
+          // for (let i = 0; i < count.length; i++) {
+          //   // 빼기 버튼
+          //   minBtn.innerText = "-";
+          //   minBtn.setAttribute("id", `minBtn${i}`);
+          //   count[i].appendChild(minBtn);
+
+          //   //숫자 감소 증가
+          //   countText.innerText = countValue;
+          //   count[i].appendChild(countText);
+          //   // 더하기 버튼
+          //   plusBtn.innerText = "+";
+          //   plusBtn.setAttribute("id", `plusBtn${i}`);
+          //   count[i].appendChild(plusBtn);
+
+          //   const minusBtn = document.getElementById(`minBtn${i}`);
+          //   minusBtn.addEventListener("click", () => {
+          //     console.log(minusBtn);
+          //   });
+          // }
 
           //가격
           let objPriceTD = document.createElement("td");
