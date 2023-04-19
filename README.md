@@ -33,3 +33,22 @@ const result = objInput[i].value - currentQues.value;
   이유 : 뭐가 중첩된 거 같다.
 
   해결방안 : 중복 되지 않도록 한다,,,?
+
+- 23.04.19
+  plusButton.addEventListener("click", () => {
+  countValue++;
+  countText.innerText = countValue;
+  updatePrice();
+  setPlus();
+  });
+
+  eventListener가 for문 안에서 돌도록 하지 않게 함수를 호출해서 사용하니 해결됐다.
+
+  function getOrderList(teaNameI) {
+  orderList = {
+  name: teaNameI,
+  count: "",
+  };
+  console.log(teaNameI);
+  }
+  관리자가 볼 수 있는 주문 내역을 console로 객체 형태로 나타낼 수 있도록 구현중.

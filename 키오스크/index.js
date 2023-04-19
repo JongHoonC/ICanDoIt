@@ -80,7 +80,6 @@ function order() {
           function updatePrice() {
             objPriceTD.textContent = objMenuList.price * countValue;
           }
-          const resultPrice = document.getElementById("resultPrice");
 
           //삭제
           let objDeleteTD = document.createElement("td");
