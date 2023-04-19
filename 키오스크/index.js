@@ -9,10 +9,10 @@ const menuList = [
   { name: "카라멜 마끼아또", price: 5600, id: "menu8" },
   { name: "카페 라떼", price: 5000, id: "menu9" },
 ];
+let orderList = [];
 function order() {
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   const orderItem = document.getElementById("orderItem");
-
   checkboxes.forEach((checkbox) => {
     if (checkbox.checked) {
       menuList.forEach((menuList) => {
@@ -24,6 +24,7 @@ function order() {
           //메뉴 이름
           let objNameTD = document.createElement("td");
           objTr.appendChild(objNameTD);
+          objNameTD.setAttribute("class", "teaName");
           objNameTD.textContent = objMenuList.name; // 메뉴 이름 추가
           //수량
           let objCountTD = document.createElement("td");
@@ -35,47 +36,56 @@ function order() {
           let count = document.querySelectorAll(".count");
           const plusBtn = document.createElement("button");
           let countValue = 1;
+          let minButton;
+          let plusButton;
           for (let i = 0; i < count.length; i++) {
+            // 빼기 버튼
             minBtn.innerText = "-";
-            minBtn.setAttribute("class", `minBtn`);
+            minBtn.setAttribute("class", `minBtn${i}`);
             count[i].appendChild(minBtn);
+            minButton = document.querySelector(`.minBtn${i}`);
+
+            // 숫자 부분
+            countText.innerText = countValue;
+            countText.setAttribute("class", `countText`);
+            count[i].appendChild(countText);
+
+            //더하기 버튼
+            plusBtn.innerText = "+";
+            plusBtn.setAttribute("class", `plusBtn${i}`);
+            count[i].appendChild(plusBtn);
+            plusButton = document.querySelector(`.plusBtn${i}`);
           }
-          const minusBtn = document.querySelectorAll(".minBtn");
-          minusBtn.forEach((mB) => {
-            mB.addEventListener("click", () => {
-              console.log("SDF");
-            });
+          minButton.addEventListener("click", () => {
+            if (countValue > 1) {
+              countValue--;
+              countText.innerText = countValue;
+              updatePrice();
+
+              setPlus();
+            }
           });
-          // for (let i = 0; i < count.length; i++) {
-          //   // 빼기 버튼
-          //   minBtn.innerText = "-";
-          //   minBtn.setAttribute("id", `minBtn${i}`);
-          //   count[i].appendChild(minBtn);
-
-          //   //숫자 감소 증가
-          //   countText.innerText = countValue;
-          //   count[i].appendChild(countText);
-          //   // 더하기 버튼
-          //   plusBtn.innerText = "+";
-          //   plusBtn.setAttribute("id", `plusBtn${i}`);
-          //   count[i].appendChild(plusBtn);
-
-          //   const minusBtn = document.getElementById(`minBtn${i}`);
-          //   minusBtn.addEventListener("click", () => {
-          //     console.log(minusBtn);
-          //   });
-          // }
+          plusButton.addEventListener("click", () => {
+            countValue++;
+            countText.innerText = countValue;
+            updatePrice();
+            setPlus();
+          });
 
           //가격
           let objPriceTD = document.createElement("td");
           objTr.appendChild(objPriceTD);
+          objPriceTD.setAttribute("class", "orderPrice");
           objPriceTD.textContent = objMenuList.price; // 메뉴 가격 추가
+          function updatePrice() {
+            objPriceTD.textContent = objMenuList.price * countValue;
+          }
+          const resultPrice = document.getElementById("resultPrice");
 
           //삭제
           let objDeleteTD = document.createElement("td");
           objDeleteTD.setAttribute("class", "deleteBtn");
           objTr.appendChild(objDeleteTD);
-
           const Delete = document.querySelectorAll(".deleteBtn");
           let deleteBtn = document.createElement("button");
           for (let i = 0; i < Delete.length; i++) {
@@ -91,7 +101,36 @@ function order() {
       });
     }
   });
+  const teaName = document.querySelectorAll(".teaName");
+  for (let i = 0; i < teaName.length; i++) {
+    let teaNameI = teaName[i].innerText;
+    getOrderList(teaNameI);
+  }
+
   clearCheck();
+}
+
+function setPlus() {
+  const resultPrice = document.getElementById("resultPrice");
+  const orderPrice = document.querySelectorAll(".orderPrice");
+  const orderCount = document.querySelectorAll(".countText"); // 총 가격을 누적할 변수 초기화
+  let resultPriceNum = 0;
+  for (let k = 0; k < orderCount.length; k++) {
+    const productPrice = Number(orderPrice[k].innerText);
+    resultPriceNum += productPrice;
+  }
+  resultPrice.innerText = resultPriceNum + " 원"; // 숫자를 문자열로 변환하여 문자열 연결
+}
+function setMinus() {
+  const resultPrice = document.getElementById("resultPrice");
+  const orderPrice = document.querySelectorAll(".orderPrice");
+  const orderCount = document.querySelectorAll(".countText"); // 총 가격을 누적할 변수 초기화
+  let resultPriceNum = 0;
+  for (let k = 0; k < orderCount.length; k++) {
+    const productPrice = Number(orderPrice[k].innerText);
+    resultPriceNum += productPrice;
+  }
+  resultPrice.innerText = resultPriceNum + " 원"; // 숫자를 문자열로 변환하여 문자열 연결
 }
 
 function clearCheck() {
@@ -103,42 +142,10 @@ function clearCheck() {
 function reloadBtn() {
   location.reload();
 }
-// //
-// //수량
-// //수량
-// const countCells = document.querySelectorAll(".count");
-
-// for (let i = 0; i < countCells.length; i++) {
-//   const countCell = countCells[i];
-//   let countValue = 1;
-
-//   let minBtn = document.createElement("button"); //빼기 버튼
-//   minBtn.setAttribute("class", "minCount");
-//   minBtn.innerText = "-";
-
-//   let numText = document.createElement("span");
-//   numText.setAttribute("class", "numCount");
-//   numText.innerText = countValue;
-
-//   let plusBtn = document.createElement("button"); //더하기 버튼
-//   plusBtn.setAttribute("class", "plusCount");
-//   plusBtn.innerText = "+";
-
-//   countCell.appendChild(minBtn);
-//   countCell.appendChild(numText);
-//   countCell.appendChild(plusBtn);
-
-//   // -버튼 클릭 이벤트
-//   minBtn.addEventListener("click", () => {
-//     if (countValue > 0) {
-//       countValue--;
-//       numText.innerText = countValue;
-//     }
-//   });
-
-//   // +버튼 클릭 이벤트
-//   plusBtn.addEventListener("click", () => {
-//     countValue++;
-//     numText.innerText = countValue;
-//   });
-// }
+function getOrderList(teaNameI) {
+  orderList = {
+    name: teaNameI,
+    count: "",
+  };
+  console.log(teaNameI);
+}
