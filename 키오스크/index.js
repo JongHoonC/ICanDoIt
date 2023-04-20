@@ -10,7 +10,13 @@ const menuList = [
   { name: "카페 라떼", price: 5000, id: "menu9" },
 ];
 let orderList = [];
+
+let teaNameI;
+let quantityNumI;
+let orderQuantity = [];
+let isfalse = "false";
 function order() {
+  isfalse = "true";
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   const orderItem = document.getElementById("orderItem");
   checkboxes.forEach((checkbox) => {
@@ -30,12 +36,11 @@ function order() {
           let objCountTD = document.createElement("td");
           objCountTD.setAttribute("class", "count");
           objTr.appendChild(objCountTD);
-
+          let countValue = 1;
           const minBtn = document.createElement("button");
           const countText = document.createElement("span");
           let count = document.querySelectorAll(".count");
           const plusBtn = document.createElement("button");
-          let countValue = 1;
           let minButton;
           let plusButton;
           for (let i = 0; i < count.length; i++) {
@@ -96,17 +101,18 @@ function order() {
               clickTarget.remove();
             });
           }
+          const teaName = document.querySelectorAll(".teaName");
+          for (let i = 0; i < teaName.length; i++) {
+            teaNameI = teaName[i].innerText;
+          }
+          orderList.push(teaNameI);
         }
       });
     }
   });
-  const teaName = document.querySelectorAll(".teaName");
-  for (let i = 0; i < teaName.length; i++) {
-    let teaNameI = teaName[i].innerText;
-    getOrderList(teaNameI);
-  }
-
   clearCheck();
+  // 주문추가 버튼을 누른 후 변한 isfalse 값을 반환
+  return isfalse;
 }
 
 function setPlus() {
@@ -141,10 +147,17 @@ function clearCheck() {
 function reloadBtn() {
   location.reload();
 }
-function getOrderList(teaNameI) {
-  orderList = {
-    name: teaNameI,
-    count: "",
-  };
-  console.log(teaNameI);
+function getOrderList() {
+  if (isfalse == order()) {
+    const quantityText = document.querySelectorAll(".countText");
+    for (let i = 0; i < quantityText.length; i++) {
+      quantityNumI = quantityText[i].innerText;
+      orderQuantity.push(quantityNumI);
+    }
+  }
+  const result = orderList.reduce((acc, curr, idx) => {
+    acc[curr] = orderQuantity[idx];
+    return acc;
+  }, new Object());
+  console.log(result);
 }
