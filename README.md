@@ -25,6 +25,7 @@ const result = objInput[i].value - currentQues.value;
 - 23.04.18
 
 ༼ つ ◕_◕ ༽つ
+
 for문 안에
 const minusBtn = document.getElementById(`minBtn${i}`);
 minusBtn.addEventListener("click", () => {
@@ -40,6 +41,7 @@ console.log("sdf");
 - 23.04.19
 
 ༼ つ ◕_◕ ༽つ
+
 plusButton.addEventListener("click", () => {
 countValue++;
 countText.innerText = countValue;
@@ -62,6 +64,7 @@ console.log(teaNameI);
   주문내역에서 메뉴를 추가하고, 추가한 메뉴와 수량을 관리자가 볼 수 있도록 console을 객체 형태로 나타냈다.
 
 ༼ つ ◕_◕ ༽つ
+
 주문한 메뉴와 수량을 확인 하려면 무조건 메뉴를 선택해야 html에서 td가 추가된 것을 확인 할 수 있다. 메뉴는 추가됐을 때 변하지 않는 객체 이지만 수량은 countValue 값이 +버튼과 -버튼을 누르느냐에 따라 바뀐다. 그래서 수량은 order()함수 안에 넣어두지 않고 밖으로 빼서 사용해야한다. 전역스코프에
 let isfalse = "false"; 를 쓰고
 function order()
