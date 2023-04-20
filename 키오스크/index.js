@@ -25,7 +25,7 @@ function order() {
         if (checkbox.id == menuList.id) {
           const objMenuList = Object.assign(menuList); //체크된 메뉴의 키 값을 선언
           let objTr = document.createElement("tr");
-          objTr.setAttribute("name", "abc");
+          objTr.setAttribute("class", "abc");
           orderItem.appendChild(objTr);
           //메뉴 이름
           let objNameTD = document.createElement("td");
@@ -160,4 +160,11 @@ function getOrderList() {
     return acc;
   }, new Object());
   console.log(result);
+
+  const clearAll = document.querySelectorAll(".abc");
+  clearAll.forEach((clearAll) => {
+    clearAll.remove();
+  });
+  const rP = document.getElementById("resultPrice");
+  rP.innerText = "0 원";
 }
