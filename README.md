@@ -22,40 +22,46 @@ const result = objInput[i].value - currentQues.value;
 
 - 23.04.17 4시 키오스크 시작
 
-- 23.04.18 for문 안에
-  const minusBtn = document.getElementById(`minBtn${i}`);
-  minusBtn.addEventListener("click", () => {
-  console.log("sdf");
-  });
+- 23.04.18
 
-  코드를 쓰고 여러개의 메뉴를 선택 후 추가하면 주문내역 제일 상단에 있는 메뉴에 -버튼을 누르면 메뉴 선택한 갯수만큼 console이 찍힌다.
+༼ つ ◕_◕ ༽つ
+for문 안에
+const minusBtn = document.getElementById(`minBtn${i}`);
+minusBtn.addEventListener("click", () => {
+console.log("sdf");
+});
 
-  이유 : 뭐가 중첩된 거 같다.
+코드를 쓰고 여러개의 메뉴를 선택 후 추가하면 주문내역 제일 상단에 있는 메뉴에 -버튼을 누르면 메뉴 선택한 갯수만큼 console이 찍힌다.
 
-  해결방안 : 중복 되지 않도록 한다,,,?
+이유 : 뭐가 중첩된 거 같다.
+
+해결방안 : 중복 되지 않도록 한다,,,?
 
 - 23.04.19
-  plusButton.addEventListener("click", () => {
-  countValue++;
-  countText.innerText = countValue;
-  updatePrice();
-  setPlus();
-  });
 
-  eventListener가 for문 안에서 돌도록 하지 않게 함수를 호출해서 사용하니 해결됐다.
+༼ つ ◕_◕ ༽つ
+plusButton.addEventListener("click", () => {
+countValue++;
+countText.innerText = countValue;
+updatePrice();
+setPlus();
+});
 
-  function getOrderList(teaNameI) {
-  orderList = {
-  name: teaNameI,
-  count: "",
-  };
-  console.log(teaNameI);
-  }
-  관리자가 볼 수 있는 주문 내역을 console로 객체 형태로 나타낼 수 있도록 구현중.
+eventListener가 for문 안에서 돌도록 하지 않게 함수를 호출해서 사용하니 해결됐다.
+
+function getOrderList(teaNameI) {
+orderList = {
+name: teaNameI,
+count: "",
+};
+console.log(teaNameI);
+}
+관리자가 볼 수 있는 주문 내역을 console로 객체 형태로 나타낼 수 있도록 구현중.
 
 - 23.04.20
   주문내역에서 메뉴를 추가하고, 추가한 메뉴와 수량을 관리자가 볼 수 있도록 console을 객체 형태로 나타냈다.
 
+༼ つ ◕_◕ ༽つ
 주문한 메뉴와 수량을 확인 하려면 무조건 메뉴를 선택해야 html에서 td가 추가된 것을 확인 할 수 있다. 메뉴는 추가됐을 때 변하지 않는 객체 이지만 수량은 countValue 값이 +버튼과 -버튼을 누르느냐에 따라 바뀐다. 그래서 수량은 order()함수 안에 넣어두지 않고 밖으로 빼서 사용해야한다. 전역스코프에
 let isfalse = "false"; 를 쓰고
 function order()
