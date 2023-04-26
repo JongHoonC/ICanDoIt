@@ -88,3 +88,14 @@ isfalse가 true 일 때 실행하게 돼서 변하는 countValue 값도 얻어�
 To Do list는 먼저 쓰기 기능 삭제 기능을 구현했다. tr과 td는 createElement를 사용하고 생성한 할일 목록은 배열안의 객체 형식으로 추후 수정이 가능하도록 만들었다. 삭제버튼은 filter 메소드를 사용해 객체를 삭제 할 수 있는 기능을 만들었다.
 
 내일 수정 버튼을 구현하기 위해 현재 td로 들어가있는 할 일 목록은 input 형식으로 만들고 수정버튼을 누르면 input type:text로 바뀌며, 옆에 확인 버튼도 생기도록 구현 할 예정입니다.
+
+- 23.04.27
+
+༼ つ ◕_◕ ༽つ
+
+원래 계획은 수정할 수 있도록 td를 input type:text로 바꾸려고 했으나, replaceTarget.setAttribute("contenteditable", "false");
+이렇게 contenteditable 가 true 일 때는 input 이 아닐 때도 텍스트를 작성할 수 있어 contenteditable 속성을 부여했다.
+
+그리고 수정을 하고 확인을 누르면 dom에서도 바뀌고 객체의 값도 바뀌어야하는데 그때, map, splice가 생각나 사용해보고 시도해봤지만 내가 원하는 값이 나오지 않아서 좀 더 쉽게 생각해 addTodoListArr[j].todo = replaceTarget.innerText; 이 코드 한 줄이면 끝나는 문제였었다. 그냥 단순히 배열에 키가 todo에다가 replaceTarget.innerText 라는 의미이다.
+
+다음 프로젝트는 게임을 한 번 만들어볼까 한다.

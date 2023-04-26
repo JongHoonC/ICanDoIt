@@ -65,3 +65,12 @@ td {
   display: flex;
   justify-content: space-evenly;
 }
+.replaceElement {
+  font-family: "GmarketSans";
+  border: none;
+  width: 45px;
+  height: 20px;
+  line-height: 20px;
+  margin-left: 20px;
+  background-color: #ffa55b;
+}

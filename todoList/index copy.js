@@ -94,30 +94,7 @@ function addTodo() {
         );
         let clickTarget = deleteBtn[i].parentNode.parentNode;
         clickTarget.remove();
-      });
-    }
-    // replace버튼 선언
-    const replaceBtn = document.querySelectorAll(".replaceBtn");
-    for (let j = 0; j < replaceBtn.length; j++) {
-      //수정 버튼 눌렀을 때
-      replaceBtn[j].addEventListener("click", () => {
-        let replaceTarget =
-          replaceBtn[j].parentNode.parentNode.querySelector(".objTodoTD");
-        replaceTarget.setAttribute("contenteditable", "true");
-        //replaceTarget 콘솔 내용 <td class="objTodoTD" contenteditable="true">12</td>
-        let replaceElement = replaceTarget.querySelector(".replaceElement");
-        if (!replaceElement) {
-          replaceElement = document.createElement("button");
-          replaceElement.setAttribute("class", "replaceElement");
-          replaceElement.innerText = "확인";
-          replaceTarget.appendChild(replaceElement);
-        }
-        replaceElement.addEventListener("click", () => {
-          replaceTarget.setAttribute("contenteditable", "false");
-          replaceElement.remove();
-          addTodoListArr[j].todo = replaceTarget.innerText;
-          console.log(addTodoListArr);
-        });
+        console.log(addTodoListArr);
       });
     }
   }
