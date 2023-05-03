@@ -6,7 +6,7 @@ const gameArea = document.getElementById("gameArea");
 let airplane = document.querySelector("#airplane");
 
 // 이동 값
-let moveValue = 50;
+let moveValue = 20;
 const airplanewidth = 160;
 
 let targetLeft = gameArea.getBoundingClientRect().left;
@@ -27,6 +27,19 @@ function startGame() {
   moveImage();
   moveImage1();
   controlAirplane();
+  const counting = document.getElementById("counting");
+  let countValue = 3;
+  counting.innerText = countValue;
+  const countdown = setInterval(() => {
+    countValue -= 1;
+    counting.innerText = countValue;
+    if (countValue === 0) {
+      counting.style.display = "none";
+      clearInterval(countdown);
+      avoidObj();
+      movemissile();
+    }
+  }, 1000);
 }
 
 function moveImage() {
@@ -71,4 +84,64 @@ function controlAirplane() {
       }
     }
   });
+}
+// 19칸
+//14칸중 랜덤으로 5칸이 붙은 빈칸으로 채우고 나머지는 미사일로 채우기
+// // 장애물
+const missileArea = document.querySelector(".missileArea");
+const missileObj = { src: "img/missile.png" };
+function avoidObj() {
+  for (let i = 0; i < 14; i++) {
+    let objmissileArea = missileArea.querySelector("img");
+    objmissileArea = document.createElement("img");
+    objmissileArea.setAttribute("class", "missileCount");
+    missileArea.appendChild(objmissileArea);
+  }
+  const missileCount = document.querySelectorAll(".missileCount");
+
+  // 안전한 곳에 id 추가
+  let safeZonenum = Math.floor(Math.random() * 9 + 1);
+  for (let j = 0; j < missileCount.length; j++) {
+    missileCount[safeZonenum].setAttribute("id", "safeZone");
+    missileCount[safeZonenum].removeAttribute("class", "missileCount");
+  }
+  // const safeZone = document.querySelector("#safeZone");
+  let objmissileArea = missileArea.querySelectorAll(".missileCount");
+  if (objmissileArea) {
+    for (let i = 0; i < objmissileArea.length; i++) {
+      objmissileArea[i].setAttribute("src", missileObj.src);
+    }
+  }
+}
+let missilePos = 0;
+const missileSpeed = 2;
+function movemissile() {
+  missilePos += missileSpeed;
+  missileArea.style.top = missilePos + "px";
+  if (missilePos >= window.innerHeight) {
+    missilePos = 0;
+    //미사일 재배치
+    const removeMissileSelect = missileArea.querySelectorAll("img");
+    for (let i = 0; i < removeMissileSelect.length; i++) {
+      removeMissileSelect[i].setAttribute("class", "missileCount");
+      removeMissileSelect[i].removeAttribute("src", " img/missile.png");
+      removeMissileSelect[i].removeAttribute("id", "safeZone");
+    }
+    const removeMissileCount = document.querySelectorAll(".missileCount");
+    let removeSafeZonenum = Math.floor(Math.random() * 9 + 1);
+    for (let j = 0; j < removeMissileCount.length; j++) {
+      removeMissileCount[removeSafeZonenum].setAttribute("id", "safeZone");
+      removeMissileCount[removeSafeZonenum].removeAttribute(
+        "class",
+        "missileCount"
+      );
+    }
+    let objmissileArea = missileArea.querySelectorAll(".missileCount");
+    if (objmissileArea) {
+      for (let i = 0; i < objmissileArea.length; i++) {
+        objmissileArea[i].setAttribute("src", missileObj.src);
+      }
+    }
+  }
+  window.requestAnimationFrame(movemissile);
 }
