@@ -118,24 +118,24 @@ function order() {
 function setPlus() {
   const resultPrice = document.getElementById("resultPrice");
   const orderPrice = document.querySelectorAll(".orderPrice");
-  const orderCount = document.querySelectorAll(".countText"); // 총 가격을 누적할 변수 초기화
+  const orderCount = document.querySelectorAll(".countText");
   let resultPriceNum = 0;
   for (let k = 0; k < orderCount.length; k++) {
     const productPrice = Number(orderPrice[k].innerText);
     resultPriceNum += productPrice;
   }
-  resultPrice.innerText = resultPriceNum + " 원"; // 숫자를 문자열로 변환하여 문자열 연결
+  resultPrice.innerText = resultPriceNum + " 원";
 }
 function setMinus() {
   const resultPrice = document.getElementById("resultPrice");
   const orderPrice = document.querySelectorAll(".orderPrice");
-  const orderCount = document.querySelectorAll(".countText"); // 총 가격을 누적할 변수 초기화
+  const orderCount = document.querySelectorAll(".countText");
   let resultPriceNum = 0;
   for (let k = 0; k < orderCount.length; k++) {
     const productPrice = Number(orderPrice[k].innerText);
     resultPriceNum += productPrice;
   }
-  resultPrice.innerText = resultPriceNum + " 원"; // 숫자를 문자열로 변환하여 문자열 연결
+  resultPrice.innerText = resultPriceNum + " 원";
 }
 
 function clearCheck() {
