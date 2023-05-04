@@ -38,26 +38,27 @@ function startGame() {
       clearInterval(countdown);
       avoidObj();
       movemissile();
+      bumpObj();
     }
   }, 1000);
 }
-
+let stopImg;
 function moveImage() {
   pos += speed;
   img.style.top = pos + "px";
   if (pos >= window.innerHeight) {
     pos = -img.height;
   }
-  window.requestAnimationFrame(moveImage);
+  stopImg = window.requestAnimationFrame(moveImage);
 }
-
+let stopImg1;
 function moveImage1() {
   pos1 += speed1;
   img1.style.top = pos1 + "px";
   if (pos1 >= window.innerHeight) {
     pos1 = -img1.height;
   }
-  window.requestAnimationFrame(moveImage1);
+  stopImg1 = window.requestAnimationFrame(moveImage1);
 }
 function controlAirplane() {
   document.addEventListener("keydown", (event) => {
@@ -115,10 +116,20 @@ function avoidObj() {
 }
 let missilePos = 0;
 const missileSpeed = 2;
+
+const score = document.querySelector("#score");
+let scoreValue = 0;
+score.innerText = `SCORE : ${scoreValue}`;
+
+let requestId = null;
+
 function movemissile() {
   missilePos += missileSpeed;
   missileArea.style.top = missilePos + "px";
   if (missilePos >= window.innerHeight) {
+    //점수 내기
+    scoreValue += 1;
+    score.innerText = `SCORE : ${scoreValue}`;
     missilePos = 0;
     //미사일 재배치
     const removeMissileSelect = missileArea.querySelectorAll("img");
@@ -143,5 +154,36 @@ function movemissile() {
       }
     }
   }
-  window.requestAnimationFrame(movemissile);
+  requestId = window.requestAnimationFrame(movemissile);
+}
+const playerScore = document.querySelector(".playerScore");
+function bumpObj() {
+  //가로가 맞았을 때
+  const missileArea = document.querySelector(".missileArea");
+  const missileTop = parseInt(missileArea.style.top);
+  let missileAreaHeight = missileArea.offsetHeight;
+  let airplaneTop = airplane.offsetTop;
+
+  const safeZone = document.querySelector("#safeZone");
+  let safeZoneLeft = safeZone.getBoundingClientRect().left;
+  let safeZoneRight = safeZone.getBoundingClientRect().right;
+  // console.log("이 사이에 위치해있어야함  " + safeZoneLeft, safeZoneRight);
+  let airplaneLeft = airplane.getBoundingClientRect().left;
+  let airplaneRight = airplane.getBoundingClientRect().right;
+  // console.log(safeZoneLeft + "<" + airplaneLeft + "<" + safeZoneRight);
+  if (
+    missileTop + missileAreaHeight === airplaneTop + 10 &&
+    (safeZoneLeft > airplaneLeft || safeZoneRight < airplaneRight)
+  ) {
+    gameArea.style.display = "none";
+    endGame.style.display = "flex";
+    window.cancelAnimationFrame(requestId);
+    window.cancelAnimationFrame(stopImg);
+    window.cancelAnimationFrame(stopImg1);
+    playerScore.innerText = `획득 점수 : ${scoreValue} 점`;
+  }
+  setInterval(bumpObj, 100);
+}
+function restart() {
+  window.location.reload();
 }

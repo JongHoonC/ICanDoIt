@@ -34,18 +34,18 @@
   position: absolute;
   top: 0;
   left: 50%;
+  z-index: -1;
   width: 768px;
   height: 100vh;
-  z-index: -1;
   transform: translateX(-50%);
 }
 #myImage1 {
   position: absolute;
   top: 0;
   left: 50%;
+  z-index: -1;
   width: 768px;
   height: 100vh;
-  z-index: -1;
 
   transform: translateX(-50%);
 }
@@ -62,9 +62,9 @@
 }
 .missileArea {
   display: flex;
-  width: 768px;
   justify-content: space-between;
   position: absolute;
+  width: 768px;
 }
 .missileArea > img {
   display: block;
@@ -72,13 +72,51 @@
   height: auto;
 }
 #safeZone {
-  width: 200px;
   visibility: hidden;
+  width: 200px;
 }
 #counting {
   position: absolute;
-  font-size: 220px;
   top: 50%;
   left: 50%;
+  font-size: 220px;
   transform: translate(-50%, -50%);
+}
+#score {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  font-size: 30px;
+  transform: translateX(-50%);
+}
+.message {
+  font-size: 140px;
+  font-weight: bold;
+  color: rgb(83, 18, 18);
+  text-align: center;
+}
+#endGame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  display: none;
+}
+
+.playerScore {
+  text-align: center;
+  margin: 100px 0;
+  font-size: 30px;
+}
+
+#endGame > button {
+  width: 200px;
+  height: 50px;
+  margin-top: 45px;
+  border: none;
+  background-color: #1d741d;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
 }
