@@ -199,3 +199,7 @@
 #endPlay > button:hover {
   background-color: #c23a3a;
 }
+
+#endPlay > p {
+  margin: 20px 0;
+}
