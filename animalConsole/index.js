@@ -21,20 +21,20 @@ function animalRun() {
       name: resultAnimal[j],
       runSpeed: runSpeed,
     };
-    console.log(`${animal.name} 난 달려 ${runSpeed}km/h 속도로`);
+    console.log(`${animal.name} 난 달려 ${animal.runSpeed}km/h 속도로`);
   }
 }
 function animalSwim() {
   for (let j = 0; j < resultAnimal.length; j++) {
-    let runSpeed = 0;
-    while (runSpeed < 5) {
-      runSpeed = Math.floor(Math.random() * 39);
+    let swimSpeed = 0;
+    while (swimSpeed < 5) {
+      swimSpeed = Math.floor(Math.random() * 39);
     }
     animal = {
       name: resultAnimal[j],
-      runSpeed: runSpeed,
+      swimSpeed: swimSpeed,
     };
-    console.log(`${animal.name} 난 수영해 ${runSpeed}km/h 속도로`);
+    console.log(`${animal.name} 난 수영해 ${animal.swimSpeed}km/h 속도로`);
   }
 }
 
