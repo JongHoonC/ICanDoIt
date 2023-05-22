@@ -2,12 +2,10 @@ const animals = ['사자', '호랑이', '사슴', '원숭이', '코끼리', '뱀
 const animalsLength = animals.length;
 let animal = {};
 let resultAnimal = [];
-for (let i = 0; i < animals.length; i++) {
-  while (resultAnimal.length < 5) {
-    const randomAnimal = Math.floor(Math.random() * animalsLength);
-    if (!resultAnimal.includes(animals[randomAnimal])) {
-      resultAnimal.push(animals[randomAnimal]);
-    }
+while (resultAnimal.length < 5) {
+  const randomAnimal = Math.floor(Math.random() * animalsLength);
+  if (!resultAnimal.includes(animals[randomAnimal])) {
+    resultAnimal.push(animals[randomAnimal]);
   }
 }
 
@@ -38,5 +36,5 @@ function animalSwim() {
   }
 }
 
-// animalRun();
+animalRun();
 animalSwim();
