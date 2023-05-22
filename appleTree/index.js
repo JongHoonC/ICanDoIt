@@ -112,7 +112,6 @@ function createTree(treeNum, treeClass) {
 
 // 사과 생성
 function createApple() {
-  // isfalse = true;
   // 각 모드마다 트리(nodes)
   const trees = tree.childNodes;
   const numTrees = trees.length;
